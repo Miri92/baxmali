@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+Route::get('/', 'Front\channelController@index')->name('channel.index');
+
+Route::namespace('Front')->prefix('/channel')->group(function () {
+    Route::post('/create', 'channelController@store')->name('channel.store');
+    Route::get('/show/{id}', 'channelController@show')->name('channel.show');
+
 });
